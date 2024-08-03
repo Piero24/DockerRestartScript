@@ -18,8 +18,8 @@ Modify the script as follows:
 ## Start the Script at Boot
 To start the script at system startup, a couple of steps are enough.
 
-- Save the script to an appropriate location on your system, such as `/usr/local/bin/check_and_restart_openvpn_container.sh`, and make it executable with the command sudo `chmod +x /usr/local/bin/check_and_restart_openvpn_container.sh`
-- Create a service file called mounter.service in /etc/systemd/system/: `sudo nano /etc/systemd/system/check_and_restart_openvpn_container.service`
+- Save the script to an appropriate location on your system, such as `/usr/local/bin/check_and_restart_container.sh`, and make it executable with the command sudo `chmod +x /usr/local/bin/check_and_restart_container.sh`
+- Create a service file called mounter.service in /etc/systemd/system/: `sudo nano /etc/systemd/system/check_and_restart_container.service`
 - Inside this file, insert the following content:
 
 ```ini
@@ -30,7 +30,7 @@ Requires=docker.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/check_and_restart_openvpn_container.sh
+ExecStart=/usr/local/bin/check_and_restart_container.sh
 RemainAfterExit=true
 
 [Install]
@@ -38,6 +38,6 @@ WantedBy=multi-user.target
 ```
 
 - restart the deamon `sudo systemctl daemon-reload`
-- enable the service to start during boot: `sudo systemctl enable /etc/systemd/system/check_and_restart_openvpn_container.service`
+- enable the service to start during boot: `sudo systemctl enable /etc/systemd/system/check_and_restart_container.service`
 
 Now, when the system starts, the script checks if the container is running properly.
