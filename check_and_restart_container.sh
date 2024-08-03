@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the container name
-CONTAINER_NAME="big-bear-openvpn-as"
+CONTAINER_NAME="CONTAINER-NAME-HERE" # -> "big-bear-openvpn-as" For the OpenVPN Container
 
 sleep 120
 
